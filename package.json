@@ -2,5 +2,9 @@
   "name": "gulp-tutorial",
   "description": "gulpの練習",
   "repository": "https://github.com/asakon/gulp_tutorial",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "gulp": "^4.0.2"
+  },
+  "dependencies": {}
 }
