@@ -1,3 +1,5 @@
 const gulp = require('gulp')
 
-gulp.task('default', (done)=>{done()})
+gulp.task('sass', () => {
+   gulp.src('./src/sass/common.scss')
+})
