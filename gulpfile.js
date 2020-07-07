@@ -5,6 +5,7 @@ const autoprefixer = require('autoprefixer')
 const flexBugsFixes = require('postcss-flexbugs-fixes')
 const cssWring = require('csswring')
 const ejs = require('gulp-ejs')
+const rename = require('gulp-rename')
 
 const autoprefixerOption = {
     grid: true
@@ -15,10 +16,6 @@ const postcssOption = [
     autoprefixer(autoprefixerOption),
     cssWring
 ]
-
-const ejsSettingOption = {
-    ext: '.html'
-}
 
 gulp.task('sass', () => {
    return gulp.src('./src/sass/common.scss')
@@ -33,6 +30,7 @@ gulp.task('watch', () => {
 
 gulp.task('ejs', () => {
     return gulp.src('./src/html/*.ejs')
-    .pipe(ejs({}, {}, ejsSettingOption))
+    .pipe(ejs())
+    .pipe(rename({ extname: '.html' }))
     .pipe(gulp.dest('./dist'))
 })
