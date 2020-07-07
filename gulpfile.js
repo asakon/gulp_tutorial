@@ -3,6 +3,7 @@ const sass = require('gulp-sass')
 const postcss = require('gulp-postcss')
 const autoprefixer = require('autoprefixer')
 const flexBugsFixes = require('postcss-flexbugs-fixes')
+const cssWring = require('csswring')
 
 const autoprefixerOption = {
     grid: true
@@ -10,7 +11,8 @@ const autoprefixerOption = {
 
 const postcssOption = [
     flexBugsFixes,
-    autoprefixer(autoprefixerOption)
+    autoprefixer(autoprefixerOption),
+    cssWring
 ]
 
 gulp.task('sass', () => {
