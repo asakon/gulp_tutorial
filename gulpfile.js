@@ -4,6 +4,7 @@ const postcss = require('gulp-postcss')
 const autoprefixer = require('autoprefixer')
 const flexBugsFixes = require('postcss-flexbugs-fixes')
 const cssWring = require('csswring')
+const ejs = require('gulp-ejs')
 
 const autoprefixerOption = {
     grid: true
@@ -15,6 +16,10 @@ const postcssOption = [
     cssWring
 ]
 
+const ejsSettingOption = {
+    ext: '.html'
+}
+
 gulp.task('sass', () => {
    return gulp.src('./src/sass/common.scss')
    .pipe(sass())
@@ -24,4 +29,10 @@ gulp.task('sass', () => {
 
 gulp.task('watch', () => {
     return gulp.watch('./src/sass/**/*.scss', gulp.series('sass'))
+})
+
+gulp.task('ejs', () => {
+    return gulp.src('./src/html/*.ejs')
+    .pipe(ejs({}, {}, ejsSettingOption))
+    .pipe(gulp.dest('./dist'))
 })
