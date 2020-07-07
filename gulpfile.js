@@ -21,3 +21,7 @@ gulp.task('sass', () => {
    .pipe(postcss(postcssOption))
    .pipe(gulp.dest('./dist'))
 })
+
+gulp.task('watch', () => {
+    return gulp.watch('./src/sass/**/*.scss', gulp.series('sass'))
+})
