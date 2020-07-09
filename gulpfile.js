@@ -7,6 +7,7 @@ const cssWring = require('csswring')
 const ejs = require('gulp-ejs')
 const rename = require('gulp-rename')
 const fs = require('fs')
+const htmlmin = require('gulp-htmlmin')
 
 const autoprefixerOption = {
     grid: true
@@ -25,6 +26,10 @@ const ejsDataOption = {
     config: configObj
 }
 
+const htmlminOption = {
+    collapseWhitespace: true
+}
+
 gulp.task('sass', () => {
    return gulp.src('./src/sass/common.scss')
    .pipe(sass())
@@ -40,5 +45,6 @@ gulp.task('ejs', () => {
     return gulp.src('./src/html/*.ejs')
     .pipe(ejs(ejsDataOption))
     .pipe(rename({ extname: '.html' }))
+    .pipe(htmlmin(htmlminOption))
     .pipe(gulp.dest('./dist'))
 })
