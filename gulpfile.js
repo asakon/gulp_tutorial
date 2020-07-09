@@ -37,14 +37,15 @@ gulp.task('sass', () => {
    .pipe(gulp.dest('./dist'))
 })
 
-gulp.task('watch', () => {
-    return gulp.watch('./src/sass/**/*.scss', gulp.series('sass'))
-})
-
 gulp.task('ejs', () => {
     return gulp.src('./src/html/*.ejs')
     .pipe(ejs(ejsDataOption))
     .pipe(rename({ extname: '.html' }))
     .pipe(htmlmin(htmlminOption))
     .pipe(gulp.dest('./dist'))
+})
+
+gulp.task('watch', () => {
+    gulp.watch('./src/sass/**/*.scss', gulp.series('sass'))
+    gulp.watch('./src/html/**/*.ejs', gulp.series('ejs'))
 })
