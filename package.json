@@ -7,7 +7,10 @@
     "autoprefixer": "^9.8.4",
     "csswring": "^7.0.0",
     "gulp": "^4.0.2",
+    "gulp-ejs": "^5.1.0",
+    "gulp-htmlmin": "^5.0.1",
     "gulp-postcss": "^8.0.0",
+    "gulp-rename": "^2.0.0",
     "gulp-sass": "^4.1.0",
     "postcss-flexbugs-fixes": "^4.2.1"
   },
