@@ -61,12 +61,12 @@ const browserReload = (done) => {
     done()
 }
 
-gulp.task('watch01', () => {
+gulp.task('watch', () => {
     gulp.watch('./src/sass/**/*.scss', gulp.series('sass'))
     gulp.watch('./src/html/**/*.ejs', gulp.series('ejs'))
     
     gulp.watch('./dist/**/*', browserReload)
 })
 
-gulp.task('default', gulp.series('serve', 'watch01'))
+gulp.task('default', gulp.series('serve', 'watch'))
 
