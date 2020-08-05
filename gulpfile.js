@@ -64,6 +64,8 @@ gulp.task('watch', (done) => {
     gulp.watch('./dist/**/*', browserReload)
 })
 
+gulp.task('default', gulp.series('serve', 'watch'))
+
 // gulp.task('watch', () => {
 //     gulp.watch('./src/sass/**/*.scss', gulp.series('sass'))
 //     gulp.watch('./src/html/**/*.ejs', gulp.series('ejs'))
