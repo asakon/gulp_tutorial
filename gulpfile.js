@@ -56,6 +56,11 @@ gulp.task('serve', (done) => {
     done()
 })
 
+gulp.task('watch01', () => {
+    gulp.watch('./src/sass/**/*.scss', gulp.series('sass'))
+    gulp.watch('./src/html/**/*.ejs', gulp.series('ejs'))
+})
+
 gulp.task('watch', (done) => {
     const browserReload = (done) => {
         browserSync.reload()
@@ -64,9 +69,5 @@ gulp.task('watch', (done) => {
     gulp.watch('./dist/**/*', browserReload)
 })
 
-gulp.task('default', gulp.series('serve', 'watch'))
+gulp.task('default', gulp.series('serve', 'watch01', 'watch'))
 
-// gulp.task('watch', () => {
-//     gulp.watch('./src/sass/**/*.scss', gulp.series('sass'))
-//     gulp.watch('./src/html/**/*.ejs', gulp.series('ejs'))
-// })
