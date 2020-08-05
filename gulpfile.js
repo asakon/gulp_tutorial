@@ -9,6 +9,8 @@ const rename = require('gulp-rename')
 const fs = require('fs')
 const htmlmin = require('gulp-htmlmin')
 
+const browserSync = require('browser-sync').create()
+
 const autoprefixerOption = {
     grid: true
 }
@@ -30,6 +32,10 @@ const htmlminOption = {
     collapseWhitespace: true
 }
 
+const browserSyncOption = {
+    server: './dist'
+}
+
 gulp.task('sass', () => {
    return gulp.src('./src/sass/common.scss')
    .pipe(sass())
@@ -45,7 +51,22 @@ gulp.task('ejs', () => {
     .pipe(gulp.dest('./dist'))
 })
 
+gulp.task('serve', (done) => {
+    browserSync.init(browserSyncOption)
+    done()
+})
+
+const browserReload = (done) => {
+    browserSync.reload()
+    done()
+}
+
 gulp.task('watch', () => {
     gulp.watch('./src/sass/**/*.scss', gulp.series('sass'))
     gulp.watch('./src/html/**/*.ejs', gulp.series('ejs'))
+    
+    gulp.watch('./dist/**/*', browserReload)
 })
+
+gulp.task('default', gulp.series('serve', 'watch'))
+
